@@ -36,5 +36,6 @@ repositories {
 
 dependencies {
   compile 'com.facebook.react:react-native:+'
-  implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+  implementation files('libs\\naveridlogin_android_sdk_4.2.6.aar')
+
 }
