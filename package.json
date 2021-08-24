@@ -2,12 +2,11 @@
   "name": "@react-native-seoul/naver-login",
   "version": "2.1.1",
   "description": "React Native Module for Naver Login",
-  "main": "index.js",
+  "main": "dist/index.js",
   "postinstall": "dooboolab-welcome postinstall",
   "scripts": {
-    "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && flowgen index.d.ts -o index.js.flow",
+    "build": "tsc && flowgen dist/index.d.ts -o dist/index.js.flow",
     "flow": "flow",
     "lint": "eslint -c .eslintrc.js 'index.ts'",
     "validate": "npm run lint && npm run test:typescript && npm run test:flow && npm run test"
@@ -34,6 +33,11 @@
     "react": "*",
     "react-native": "*"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && git add ."
+    }
+  },
   "dependencies": {
     "dooboolab-welcome": "^1.1.1"
   },
@@ -47,6 +51,7 @@
     "eslint": "^6.4.0",
     "flow-bin": "^0.104.0",
     "flowgen": "^1.10.0",
+    "husky": "^7.0.1",
     "typescript": "^3.6.3"
   }
 }

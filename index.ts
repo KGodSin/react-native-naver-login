@@ -37,8 +37,13 @@ export interface ConfigParam {
 }
 
 const NaverLoginIos = {
-  login(param: ConfigParam, callback: ICallback<TokenResponse>): void {
-    IosNaverLogin.login(param, callback);
+  login(param: ConfigParam): Promise<TokenResponse> {
+    return new Promise<TokenResponse>((resolve, reject) => {
+      IosNaverLogin.login(param, (error: Error | undefined, result: TokenResponse | undefined) => {
+        if (error) reject(error);
+        else resolve(result);
+      });
+    });
   },
   logout(): void {
     IosNaverLogin.logout();
@@ -46,8 +51,13 @@ const NaverLoginIos = {
 };
 
 const RNNaverLoginAndr = {
-  login(param: ConfigParam, callback: ICallback<TokenResponse>): void {
-    RNNaverLogin.login(param, callback);
+  login(param: ConfigParam): Promise<TokenResponse> {
+    return new Promise<TokenResponse>((resolve, reject) => {
+      RNNaverLogin.login(param, (error: Error | undefined, result: TokenResponse | undefined) => {
+        if (error) reject(error);
+        else resolve(result);
+      });
+    });
   },
   logout(): void {
     RNNaverLogin.logout();
